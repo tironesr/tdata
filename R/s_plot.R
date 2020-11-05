@@ -1,6 +1,9 @@
 #' A Plotting Function With Slopes & Interactions
 #'
 #' This function allows you to quickly visualize the slopes and confidence intervals of your data in informative ways. It is designed for use with two continuous variables and optionally one categorical moderator.
+#'
+#' NOTE: Please make sure your data has been cleaned of NA's and is a data frame (not a tibble or matrix)
+#'
 #' @param x a continuous variable for the x axis
 #' @param y a continuous variable for the y axis
 #' @param df a dataframe containing x & y
@@ -61,7 +64,7 @@
             CI <- as.data.frame(CI)
             polygon(c(xvals, rev(xvals)),
                     c(CI$lwr, rev(CI$upr)), border = cols[i])
-            legend(lloc, legend = paste0("Beta = ",round(int_lm2$coef[2],3)), bty = "n")
+            title(sub = paste0("Beta = ",round(int_lm2$coef[2],3)))
 
           }
         }
